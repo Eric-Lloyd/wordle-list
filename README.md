@@ -11,7 +11,9 @@ import requests
 def fetch_words():
   url = "https://raw.githubusercontent.com/Eric-Lloyd/wordle-list/main/words"
   response = requests.get(url)
-  return response.text.split("\n")
+  words = response.text.split("\n")
+  return [word for word in words if len(word) == 5]
+
 
 words = fetch_words()
 ```
