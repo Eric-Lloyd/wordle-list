@@ -1,7 +1,7 @@
 # wordle-list
 To fetch list with _curl_ use the following command:
 ```bash
-curl -s https://raw.githubusercontent.com/Eric-Lloyd/wordle-list/main/words
+curl -s https://raw.githubusercontent.com/Eric-Lloyd/wordle-list/main/words-dict.json
 ```
 
 To fetch list in _Python_ use the following code:
@@ -9,11 +9,9 @@ To fetch list in _Python_ use the following code:
 import requests
 
 def fetch_words():
-  url = "https://raw.githubusercontent.com/Eric-Lloyd/wordle-list/main/words"
+  url = "https://raw.githubusercontent.com/Eric-Lloyd/wordle-list/main/words-dict.json"
   response = requests.get(url)
-  words = response.text.split("\n")
-  return [word for word in words if len(word) == 5]
-
+  return response.json()["words"]
 
 words = fetch_words()
 ```
